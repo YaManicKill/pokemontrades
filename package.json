@@ -1,0 +1,19 @@
+{
+  "name": "scripts",
+  "version": "0.0.1",
+  "description": "Repository containing scripts used for reddit.com/r/pokemontrades",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pokemontrades/scripts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/pokemontrades/scripts/issues"
+  },
+  "homepage": "https://github.com/pokemontrades/scripts#readme",
+  "dependencies": {
+    "snoowrap": "^1.4.1"
+  }
+}
