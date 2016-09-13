@@ -17,9 +17,9 @@ var checkExist = setInterval(function() {
     $('.tagline').each(function (index, element) {
       $(element).find('a[href*="user"]').each(function (index2, element2) {
         var username = element2.innerHTML;
-        var url = "http://hq.porygon.co/u/" + username;
+        var url = "https://hq.porygon.co/u/" + username;
         $(element).find('span.flair').each(function (index3, element3) {
-          $(element3).after("<a href='" + url + "'>FlairHQ</a>");
+          $(element3).after("<a href='" + url.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/'/g, '&#39;') + "'>FlairHQ</a>");
         });
       });
     });
