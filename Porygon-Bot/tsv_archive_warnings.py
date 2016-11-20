@@ -3,6 +3,7 @@ from datetime import datetime
 import OAuth2Util
 import praw
 import urllib
+import re
 
 r = praw.Reddit(user_agent = 'Porygon Archive Warnings')
 r.config.api_request_delay = 1.01
@@ -40,7 +41,8 @@ If you would like to continue hatching eggs for the community, you will need to 
 *This comment was posted automatically by a bot. If you have any questions/concerns, please \
 [message the moderators](/message/compose?to=%2Fr%2FSVExchange).*"""
 
-			new_post_body = urllib.quote(result.selftext.encode('utf-8')).replace(')', '\\)').replace('*', '\\*').strip()
+			new_post_body = re.sub(r'\[tsv\](?!\((\w+:)?\/)', '[tsv6]', result.selftext.encode('utf-8'), flags=re.IGNORECASE)
+			new_post_body = urllib.quote(new_post_body).replace(')', '\\)').replace('*', '\\*').strip()
 			archived_link = urllib.quote(('\n\n[Old thread (archived)](' + result.url + ')').encode('utf-8'))
 			if len(first_block + new_post_body + archived_link + last_block) <= REDDIT_MAX_COMMENT_LENGTH:
 				response = first_block + new_post_body + archived_link + last_block
