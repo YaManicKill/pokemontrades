@@ -18,7 +18,7 @@ archive_point = datetime.utcnow() - REDDIT_ARCHIVE_AGE
 epoch = datetime.utcfromtimestamp(0)
 lower_bound_timestamp = int((archive_point - SCRIPT_PERIOD * 2 + TIMESTAMP_OFFSET - epoch).total_seconds())
 upper_bound_timestamp = int((archive_point + SCRIPT_PERIOD + TIMESTAMP_OFFSET - epoch).total_seconds())
-search_query = '(and timestamp:' + str(lower_bound_timestamp) + '..' + str(upper_bound_timestamp) + " flair:'sv')"
+search_query = '(and timestamp:' + str(lower_bound_timestamp) + '..' + str(upper_bound_timestamp) + " (or flair_css_class:'sv6' flair_css_class:'sv7'))"
 closed = []
 warned = []
 for result in r.search(search_query, subreddit = 'SVExchange', sort = 'new', syntax = 'cloudsearch', limit = None):
